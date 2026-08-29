@@ -28,6 +28,9 @@ export type Content = {
     body: string;
     emailLabel: string;
     whatsappLabel: string;
+    instagramLabel: string;
+    /** Reassurance shown beside the channel list. */
+    responseNote: string;
   };
   footer: { rights: string; credit: string };
 };
@@ -92,6 +95,8 @@ export const content: Record<Lang, Content> = {
       body: "Reach out directly — a real person reads every message.",
       emailLabel: "Email us",
       whatsappLabel: "WhatsApp",
+      instagramLabel: "Instagram",
+      responseNote: "We usually reply the same day.",
     },
     footer: {
       rights: "All rights reserved.",
@@ -157,6 +162,8 @@ export const content: Record<Lang, Content> = {
       body: "Escríbenos directo — una persona real lee cada mensaje.",
       emailLabel: "Escríbenos",
       whatsappLabel: "WhatsApp",
+      instagramLabel: "Instagram",
+      responseNote: "Normalmente respondemos el mismo día.",
     },
     footer: {
       rights: "Todos los derechos reservados.",

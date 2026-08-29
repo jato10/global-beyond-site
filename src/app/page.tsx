@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
-import { Mail, MessageCircle, ShieldCheck, Sparkles, Menu, X } from "lucide-react";
+import { Mail, MessageCircle, ShieldCheck, Sparkles, Menu, X, ArrowUpRight } from "lucide-react";
 import { LanguageProvider, useLanguage } from "@/components/LanguageProvider";
 import { Logo } from "@/components/Logo";
 import { CONTACT } from "@/lib/content";
@@ -257,51 +257,93 @@ function Reviews() {
   );
 }
 
+function ChannelLink({
+  href,
+  icon,
+  label,
+  value,
+  external = false,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  external?: boolean;
+}) {
+  return (
+    <a
+      href={href}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className="group flex min-w-0 items-center gap-4 rounded-2xl border border-silver-dim/20 bg-background p-4 text-left transition duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:border-accent-bright/60 active:scale-[0.99] sm:p-5"
+    >
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/20 text-accent-bright transition-colors duration-300 group-hover:bg-accent/40">
+        {icon}
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block text-xs text-silver-dim">{label}</span>
+        <span className="block text-sm font-medium text-foreground [overflow-wrap:anywhere]">
+          {value}
+        </span>
+      </span>
+      <ArrowUpRight
+        aria-hidden
+        className="h-4 w-4 shrink-0 text-silver-dim transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-bright"
+      />
+    </a>
+  );
+}
+
 function Contact() {
   const { t } = useLanguage();
   return (
-    <section id="contact" className="px-6 py-28 text-center">
-      <div className="mx-auto max-w-2xl">
-        <motion.p
-          {...fadeUp(0)}
-          className="text-xs font-semibold uppercase tracking-[0.3em] text-silver-dim"
-        >
-          {t.contact.kicker}
-        </motion.p>
-        <motion.h2
-          {...fadeUp(0.08)}
-          className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl"
-        >
-          {t.contact.title}
-        </motion.h2>
-        <motion.p {...fadeUp(0.16)} className="mt-4 text-lg text-muted">
-          {t.contact.body}
-        </motion.p>
-        <motion.div {...fadeUp(0.24)} className="mt-10 flex flex-wrap justify-center gap-4">
-          <a
+    <section id="contact" className="relative overflow-hidden px-6 py-28">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-20 blur-3xl"
+        style={{ background: "radial-gradient(circle, #4a6b8a 0%, transparent 70%)" }}
+      />
+      <motion.div
+        {...fadeUp(0)}
+        className="relative mx-auto max-w-3xl rounded-[2rem] border border-silver-dim/20 bg-background-alt p-8 sm:p-12"
+      >
+        <div className="text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-silver-dim">
+            {t.contact.kicker}
+          </p>
+          <h2 className="mt-4 text-balance font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+            {t.contact.title}
+          </h2>
+          <p className="mx-auto mt-4 max-w-md text-balance text-lg leading-relaxed text-muted">
+            {t.contact.body}
+          </p>
+          <p className="mt-5 inline-flex items-center gap-2 text-xs text-silver-dim">
+            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent-bright" />
+            {t.contact.responseNote}
+          </p>
+        </div>
+        <div className="mx-auto mt-10 grid max-w-xl gap-3">
+          <ChannelLink
             href={`mailto:${CONTACT.email}`}
-            className="flex items-center gap-3 rounded-2xl border border-silver-dim/30 bg-background-alt px-6 py-4 transition-colors duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-accent-bright active:scale-97"
-          >
-            <Mail className="h-5 w-5 text-accent-bright" aria-hidden />
-            <span>
-              <span className="block text-xs text-silver-dim">{t.contact.emailLabel}</span>
-              <span className="text-sm font-medium">{CONTACT.email}</span>
-            </span>
-          </a>
-          <a
+            icon={<Mail className="h-5 w-5" aria-hidden />}
+            label={t.contact.emailLabel}
+            value={CONTACT.email}
+          />
+          <ChannelLink
             href={`https://wa.me/${CONTACT.whatsapp}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 rounded-2xl border border-silver-dim/30 bg-background-alt px-6 py-4 transition-colors duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-accent-bright active:scale-97"
-          >
-            <MessageCircle className="h-5 w-5 text-accent-bright" aria-hidden />
-            <span>
-              <span className="block text-xs text-silver-dim">{t.contact.whatsappLabel}</span>
-              <span className="text-sm font-medium">{CONTACT.whatsappDisplay}</span>
-            </span>
-          </a>
-        </motion.div>
-      </div>
+            icon={<MessageCircle className="h-5 w-5" aria-hidden />}
+            label={t.contact.whatsappLabel}
+            value={CONTACT.whatsappDisplay}
+            external
+          />
+          <ChannelLink
+            href={CONTACT.instagram}
+            icon={<InstagramIcon className="h-5 w-5" />}
+            label={t.contact.instagramLabel}
+            value={CONTACT.instagramHandle}
+            external
+          />
+        </div>
+      </motion.div>
     </section>
   );
 }
