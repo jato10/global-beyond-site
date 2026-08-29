@@ -171,8 +171,8 @@ function About() {
             <Image
               src="/images/team.jpg"
               alt={t.about.teamCaption}
-              width={1362}
-              height={771}
+              width={3480}
+              height={1960}
               className="h-auto w-full"
             />
           </div>
