@@ -9,10 +9,10 @@ export function Logo({
 }) {
   return (
     <Image
-      src="/images/logo.jpg"
+      src="/images/logo.png"
       alt="Global Beyond LLC"
-      width={2779}
-      height={1375}
+      width={1345}
+      height={647}
       priority={!compact}
       className={`h-auto w-auto ${compact ? "max-h-10" : "max-h-16"} ${className}`}
     />
