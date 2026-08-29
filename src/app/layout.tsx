@@ -19,11 +19,11 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Global Beyond LLC — Beyond Borders. Beyond Possibilities.",
   description:
-    "Global Beyond LLC brings premium kitchen and electronics essentials to families who want quality without compromise.",
+    "Global Beyond LLC brings families a wide range of everyday products, backed by real quality and a real guarantee.",
   openGraph: {
     title: "Global Beyond LLC",
     description:
-      "Premium kitchen and electronics essentials, backed by real quality and a real guarantee.",
+      "Everyday products that make life easier, backed by real quality and a real guarantee.",
     type: "website",
   },
 };

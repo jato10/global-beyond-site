@@ -42,7 +42,7 @@ function Nav() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#top" aria-label="Global Beyond LLC">
-          <Logo />
+          <Logo compact />
         </a>
         <nav className="hidden items-center gap-8 text-sm text-muted md:flex">
           {links.map((link) => (
@@ -98,18 +98,13 @@ function Nav() {
 function Hero() {
   const { t } = useLanguage();
   return (
-    <section id="top" className="relative overflow-hidden px-6 pb-24 pt-20 md:pt-32">
+    <section id="top" className="relative overflow-hidden px-6 pb-28 pt-28 text-center md:pt-40">
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-1/3 right-[-10%] h-[560px] w-[560px] rounded-full opacity-20 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-0 h-[640px] w-[900px] -translate-x-1/2 opacity-25 blur-3xl"
         style={{ background: "radial-gradient(circle, #4a6b8a 0%, transparent 70%)" }}
       />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-[-15%] top-1/4 h-[380px] w-[380px] rounded-full opacity-10 blur-3xl"
-        style={{ background: "radial-gradient(circle, #c9cdd3 0%, transparent 70%)" }}
-      />
-      <div className="relative mx-auto max-w-6xl">
+      <div className="relative mx-auto max-w-4xl">
         <motion.p
           {...fadeUp(0)}
           className="mb-6 text-xs font-semibold uppercase tracking-[0.3em] text-silver-dim"
@@ -118,17 +113,20 @@ function Hero() {
         </motion.p>
         <motion.h1
           {...fadeUp(0.08)}
-          className="max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl md:text-6xl"
+          className="mx-auto font-display text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl"
         >
           {t.hero.tagline}
         </motion.h1>
-        <motion.p {...fadeUp(0.16)} className="mt-3 max-w-xl text-base text-silver">
+        <motion.p {...fadeUp(0.16)} className="mx-auto mt-4 max-w-lg text-base text-silver">
           {t.hero.subtagline}
         </motion.p>
-        <motion.p {...fadeUp(0.24)} className="mt-8 max-w-xl text-lg leading-relaxed text-muted">
+        <motion.p
+          {...fadeUp(0.24)}
+          className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-muted sm:text-xl"
+        >
           {t.hero.lead}
         </motion.p>
-        <motion.div {...fadeUp(0.32)} className="mt-10 flex flex-wrap gap-4">
+        <motion.div {...fadeUp(0.32)} className="mt-10 flex flex-wrap justify-center gap-4">
           <a
             href="#contact"
             className="rounded-full bg-accent px-7 py-3 text-sm font-semibold text-foreground transition-colors duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-accent-bright active:scale-97"
@@ -150,17 +148,21 @@ function Hero() {
 function About() {
   const { t } = useLanguage();
   return (
-    <section id="about" className="border-t border-white/5 bg-background-alt px-6 py-24">
-      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
-        <motion.div {...fadeUp(0)}>
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-silver-dim">
-            {t.about.kicker}
-          </p>
-          <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-            {t.about.title}
-          </h2>
-        </motion.div>
-        <motion.p {...fadeUp(0.1)} className="text-lg leading-relaxed text-muted">
+    <section id="about" className="border-t border-white/5 bg-background-alt px-6 py-28 text-center">
+      <div className="mx-auto max-w-3xl">
+        <motion.p
+          {...fadeUp(0)}
+          className="text-xs font-semibold uppercase tracking-[0.3em] text-silver-dim"
+        >
+          {t.about.kicker}
+        </motion.p>
+        <motion.h2
+          {...fadeUp(0.08)}
+          className="mx-auto mt-4 max-w-2xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl"
+        >
+          {t.about.title}
+        </motion.h2>
+        <motion.p {...fadeUp(0.16)} className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
           {t.about.body}
         </motion.p>
       </div>
@@ -171,34 +173,32 @@ function About() {
 function Why() {
   const { t } = useLanguage();
   return (
-    <section id="why" className="px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        <motion.div {...fadeUp(0)} className="max-w-xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-silver-dim">
-            {t.why.kicker}
-          </p>
-          <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-            {t.why.title}
-          </h2>
+    <section id="why" className="px-6 py-28 text-center">
+      <div className="mx-auto max-w-3xl">
+        <motion.p
+          {...fadeUp(0)}
+          className="text-xs font-semibold uppercase tracking-[0.3em] text-silver-dim"
+        >
+          {t.why.kicker}
+        </motion.p>
+        <motion.h2
+          {...fadeUp(0.08)}
+          className="mx-auto mt-4 max-w-2xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl"
+        >
+          {t.why.title}
+        </motion.h2>
+      </div>
+      <div className="mx-auto mt-16 grid max-w-4xl gap-16 md:grid-cols-2">
+        <motion.div {...fadeUp(0.14)}>
+          <Sparkles className="mx-auto h-7 w-7 text-accent-bright" aria-hidden />
+          <h3 className="mt-5 font-display text-2xl font-semibold">{t.why.quality.title}</h3>
+          <p className="mx-auto mt-3 max-w-xs leading-relaxed text-muted">{t.why.quality.body}</p>
         </motion.div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          <motion.div
-            {...fadeUp(0.1)}
-            className="rounded-2xl border border-silver-dim/25 bg-background-alt p-8"
-          >
-            <Sparkles className="h-6 w-6 text-accent-bright" aria-hidden />
-            <h3 className="mt-5 font-display text-xl font-semibold">{t.why.quality.title}</h3>
-            <p className="mt-3 leading-relaxed text-muted">{t.why.quality.body}</p>
-          </motion.div>
-          <motion.div
-            {...fadeUp(0.2)}
-            className="rounded-2xl border border-silver-dim/25 bg-background-alt p-8 md:translate-y-8"
-          >
-            <ShieldCheck className="h-6 w-6 text-accent-bright" aria-hidden />
-            <h3 className="mt-5 font-display text-xl font-semibold">{t.why.guarantee.title}</h3>
-            <p className="mt-3 leading-relaxed text-muted">{t.why.guarantee.body}</p>
-          </motion.div>
-        </div>
+        <motion.div {...fadeUp(0.22)}>
+          <ShieldCheck className="mx-auto h-7 w-7 text-accent-bright" aria-hidden />
+          <h3 className="mt-5 font-display text-2xl font-semibold">{t.why.guarantee.title}</h3>
+          <p className="mx-auto mt-3 max-w-xs leading-relaxed text-muted">{t.why.guarantee.body}</p>
+        </motion.div>
       </div>
     </section>
   );
@@ -207,37 +207,39 @@ function Why() {
 function Reviews() {
   const { t } = useLanguage();
   return (
-    <section id="reviews" className="border-t border-white/5 bg-background-alt px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        <motion.div {...fadeUp(0)} className="max-w-xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-silver-dim">
-            {t.reviews.kicker}
-          </p>
-          <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-            {t.reviews.title}
-          </h2>
-        </motion.div>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {t.reviews.items.map((item, i) => (
-            <motion.figure
-              key={item.name}
-              {...fadeUp(0.1 + i * 0.08)}
-              className={`rounded-2xl border border-silver-dim/25 bg-background p-7 ${
-                i === 1 ? "md:translate-y-6" : ""
-              }`}
-            >
-              <blockquote className="text-sm leading-relaxed text-foreground/90">
-                “{item.quote}”
-              </blockquote>
-              <figcaption className="mt-6 text-sm">
-                <span className="font-semibold text-silver">{item.name}</span>
-                <span className="block text-xs text-silver-dim">{item.role}</span>
-              </figcaption>
-            </motion.figure>
-          ))}
-        </div>
-        <p className="mt-6 text-xs italic text-silver-dim">{t.reviews.disclaimer}</p>
+    <section id="reviews" className="border-t border-white/5 bg-background-alt px-6 py-28 text-center">
+      <div className="mx-auto max-w-3xl">
+        <motion.p
+          {...fadeUp(0)}
+          className="text-xs font-semibold uppercase tracking-[0.3em] text-silver-dim"
+        >
+          {t.reviews.kicker}
+        </motion.p>
+        <motion.h2
+          {...fadeUp(0.08)}
+          className="mx-auto mt-4 max-w-2xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl"
+        >
+          {t.reviews.title}
+        </motion.h2>
       </div>
+      <div className="mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-3">
+        {t.reviews.items.map((item, i) => (
+          <motion.figure
+            key={item.name}
+            {...fadeUp(0.14 + i * 0.08)}
+            className="rounded-2xl border border-silver-dim/25 bg-background p-8 text-left"
+          >
+            <blockquote className="text-sm leading-relaxed text-foreground/90">
+              “{item.quote}”
+            </blockquote>
+            <figcaption className="mt-6 text-sm">
+              <span className="font-semibold text-silver">{item.name}</span>
+              <span className="block text-xs text-silver-dim">{item.role}</span>
+            </figcaption>
+          </motion.figure>
+        ))}
+      </div>
+      <p className="mt-8 text-xs italic text-silver-dim">{t.reviews.disclaimer}</p>
     </section>
   );
 }
@@ -245,18 +247,24 @@ function Reviews() {
 function Contact() {
   const { t } = useLanguage();
   return (
-    <section id="contact" className="px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        <motion.div {...fadeUp(0)} className="max-w-xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-silver-dim">
-            {t.contact.kicker}
-          </p>
-          <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-            {t.contact.title}
-          </h2>
-          <p className="mt-4 text-lg text-muted">{t.contact.body}</p>
-        </motion.div>
-        <motion.div {...fadeUp(0.12)} className="mt-10 flex flex-wrap gap-4">
+    <section id="contact" className="px-6 py-28 text-center">
+      <div className="mx-auto max-w-2xl">
+        <motion.p
+          {...fadeUp(0)}
+          className="text-xs font-semibold uppercase tracking-[0.3em] text-silver-dim"
+        >
+          {t.contact.kicker}
+        </motion.p>
+        <motion.h2
+          {...fadeUp(0.08)}
+          className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl"
+        >
+          {t.contact.title}
+        </motion.h2>
+        <motion.p {...fadeUp(0.16)} className="mt-4 text-lg text-muted">
+          {t.contact.body}
+        </motion.p>
+        <motion.div {...fadeUp(0.24)} className="mt-10 flex flex-wrap justify-center gap-4">
           <a
             href={`mailto:${CONTACT.email}`}
             className="flex items-center gap-3 rounded-2xl border border-silver-dim/30 bg-background-alt px-6 py-4 transition-colors duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-accent-bright active:scale-97"

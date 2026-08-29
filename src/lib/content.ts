@@ -39,21 +39,21 @@ export const content: Record<Lang, Content> = {
       tagline: "Beyond Borders. Beyond Possibilities.",
       subtagline: "Más allá de las fronteras. Más allá de las posibilidades.",
       lead:
-        "We bring premium kitchen and electronics essentials into homes that don't settle for less.",
+        "We bring a wide range of everyday products into homes that don't settle for less.",
       cta: "Get in Touch",
       ctaSecondary: "About Us",
     },
     about: {
       kicker: "Who We Are",
       title: "A family business built on one idea",
-      body: "Global Beyond LLC started with a simple frustration: the kitchen and electronics you actually want shouldn't be hard to find, or feel disposable the moment you get them home. We source pieces built to last, curated for families who'd rather buy once and buy right.",
+      body: "Global Beyond LLC was born from an idea: everyday products should make life easier, not harder. We bring together a wide range of items designed to simplify daily routines, sourced with care and built to last, for families who'd rather buy once and buy right.",
     },
     why: {
       kicker: "Why Global Beyond",
       title: "Two things we don't compromise on",
       quality: {
         title: "Premium Quality",
-        body: "Every product goes through the same question before it reaches our catalog: would we put this in our own kitchen? If the answer's no, it doesn't make the cut.",
+        body: "Every product goes through the same question before it reaches our catalog: would we use this in our own home? If the answer's no, it doesn't make the cut.",
       },
       guarantee: {
         title: "Real Guarantee",
@@ -81,7 +81,7 @@ export const content: Record<Lang, Content> = {
           name: "Ana Beltrán",
           role: "Houston, TX",
           quote:
-            "Finally an electronics brand that doesn't feel disposable. Solid build, no buyer's remorse.",
+            "Finally a brand that doesn't feel disposable. Solid build, no buyer's remorse.",
         },
       ],
     },
@@ -103,21 +103,21 @@ export const content: Record<Lang, Content> = {
       tagline: "Beyond Borders. Beyond Possibilities.",
       subtagline: "Más allá de las fronteras. Más allá de las posibilidades.",
       lead:
-        "Llevamos productos premium de cocina y electrónicos a hogares que no se conforman con menos.",
+        "Llevamos una amplia variedad de productos del día a día a hogares que no se conforman con menos.",
       cta: "Contáctanos",
       ctaSecondary: "Quiénes Somos",
     },
     about: {
       kicker: "Quiénes Somos",
       title: "Un negocio familiar construido sobre una idea",
-      body: "Global Beyond LLC nació de una frustración simple: los productos de cocina y electrónicos que de verdad quieres no deberían ser difíciles de encontrar, ni sentirse desechables apenas llegan a casa. Buscamos piezas hechas para durar, pensadas para familias que prefieren comprar una vez y comprar bien.",
+      body: "Global Beyond LLC nació de una idea: los productos del día a día deberían hacerte la vida más fácil, no más complicada. Reunimos diversos artículos pensados para simplificar tu rutina, elegidos con cuidado y hechos para durar, para familias que prefieren comprar una vez y comprar bien.",
     },
     why: {
       kicker: "Por Qué Global Beyond",
       title: "Dos cosas en las que no cedemos",
       quality: {
         title: "Calidad Premium",
-        body: "Cada producto pasa por la misma pregunta antes de llegar a nuestro catálogo: ¿lo pondríamos en nuestra propia cocina? Si la respuesta es no, no entra.",
+        body: "Cada producto pasa por la misma pregunta antes de llegar a nuestro catálogo: ¿lo usaríamos en nuestra propia casa? Si la respuesta es no, no entra.",
       },
       guarantee: {
         title: "Garantía Real",
@@ -145,7 +145,7 @@ export const content: Record<Lang, Content> = {
           name: "Ana Beltrán",
           role: "Houston, TX",
           quote:
-            "Por fin una marca de electrónicos que no se siente desechable. Construcción sólida, sin arrepentimientos.",
+            "Por fin una marca que no se siente desechable. Construcción sólida, sin arrepentimientos.",
         },
       ],
     },
