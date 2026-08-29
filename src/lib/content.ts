@@ -9,7 +9,7 @@ export type Content = {
     cta: string;
     ctaSecondary: string;
   };
-  about: { kicker: string; title: string; body: string };
+  about: { kicker: string; title: string; body: string; teamCaption: string };
   why: {
     kicker: string;
     title: string;
@@ -47,6 +47,7 @@ export const content: Record<Lang, Content> = {
       kicker: "Who We Are",
       title: "A family business built on one idea",
       body: "Global Beyond LLC was born from an idea: everyday products should make life easier, not harder. We bring together a wide range of items designed to simplify daily routines, sourced with care and built to last, for families who'd rather buy once and buy right.",
+      teamCaption: "The people behind Global Beyond",
     },
     why: {
       kicker: "Why Global Beyond",
@@ -111,6 +112,7 @@ export const content: Record<Lang, Content> = {
       kicker: "Quiénes Somos",
       title: "Un negocio familiar construido sobre una idea",
       body: "Global Beyond LLC nació de una idea: los productos del día a día deberían hacerte la vida más fácil, no más complicada. Reunimos diversos artículos pensados para simplificar tu rutina, elegidos con cuidado y hechos para durar, para familias que prefieren comprar una vez y comprar bien.",
+      teamCaption: "Las personas detrás de Global Beyond",
     },
     why: {
       kicker: "Por Qué Global Beyond",

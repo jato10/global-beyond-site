@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { Mail, MessageCircle, ShieldCheck, Sparkles, Menu, X } from "lucide-react";
 import { LanguageProvider, useLanguage } from "@/components/LanguageProvider";
@@ -165,6 +166,18 @@ function About() {
         <motion.p {...fadeUp(0.16)} className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
           {t.about.body}
         </motion.p>
+        <motion.figure {...fadeUp(0.24)} className="mx-auto mt-14 max-w-2xl">
+          <div className="overflow-hidden rounded-3xl border border-silver-dim/25">
+            <Image
+              src="/images/team.jpg"
+              alt={t.about.teamCaption}
+              width={1362}
+              height={771}
+              className="h-auto w-full"
+            />
+          </div>
+          <figcaption className="mt-4 text-sm text-silver-dim">{t.about.teamCaption}</figcaption>
+        </motion.figure>
       </div>
     </section>
   );
