@@ -11,10 +11,10 @@ export function Logo({
     <Image
       src="/images/logo.jpg"
       alt="Global Beyond LLC"
-      width={3480}
-      height={2035}
+      width={2779}
+      height={1375}
       priority={!compact}
-      className={`h-auto w-auto ${compact ? "max-h-8" : "max-h-14"} ${className}`}
+      className={`h-auto w-auto ${compact ? "max-h-10" : "max-h-16"} ${className}`}
     />
   );
 }
