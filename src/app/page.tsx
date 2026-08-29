@@ -3,10 +3,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
-import { Mail, MessageCircle, ShieldCheck, Sparkles, Menu, X } from "lucide-react";
+import { Mail, MessageCircle, ShieldCheck, Sparkles, Menu, X, Quote, Star, Info } from "lucide-react";
 import { LanguageProvider, useLanguage } from "@/components/LanguageProvider";
 import { Logo } from "@/components/Logo";
-import { CONTACT } from "@/lib/content";
+import { CONTACT, type Content } from "@/lib/content";
 
 function InstagramIcon({ className = "" }: { className?: string }) {
   return (
@@ -217,11 +217,107 @@ function Why() {
   );
 }
 
+type ReviewItem = Content["reviews"]["items"][number];
+
+function initials(name: string) {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+}
+
+function Stars({ rating, label }: { rating: number; label: string }) {
+  return (
+    <div className="flex gap-0.5" role="img" aria-label={label}>
+      {Array.from({ length: 5 }, (_, i) => (
+        <Star
+          key={i}
+          aria-hidden
+          className={`h-3.5 w-3.5 ${
+            i < rating ? "fill-accent-bright text-accent-bright" : "text-silver-dim/40"
+          }`}
+        />
+      ))}
+    </div>
+  );
+}
+
+function ReviewCard({
+  item,
+  ratingLabel,
+  featured = false,
+}: {
+  item: ReviewItem;
+  ratingLabel: string;
+  featured?: boolean;
+}) {
+  return (
+    <figure
+      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border bg-background p-8 text-left transition duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1 hover:border-accent-bright/60 ${
+        featured ? "justify-center border-accent/40 sm:p-10" : "border-silver-dim/20"
+      }`}
+    >
+      {featured && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full opacity-40 blur-3xl"
+          style={{ background: "radial-gradient(circle, #4a6b8a 0%, transparent 70%)" }}
+        />
+      )}
+      <div className="relative flex items-center justify-between gap-4">
+        <Quote
+          aria-hidden
+          className={`text-accent-bright/35 ${featured ? "h-8 w-8" : "h-6 w-6"}`}
+        />
+        <Stars rating={item.rating} label={ratingLabel} />
+      </div>
+      <blockquote
+        className={`relative mt-6 text-foreground/90 ${
+          featured
+            ? "font-display text-xl font-medium leading-snug sm:text-[1.75rem]"
+            : "flex-1 text-sm leading-relaxed"
+        }`}
+      >
+        {item.quote}
+      </blockquote>
+      <figcaption className="relative mt-8 flex items-center gap-3 border-t border-white/5 pt-6">
+        <span
+          aria-hidden
+          className={`flex shrink-0 items-center justify-center rounded-full bg-accent/25 font-display font-semibold text-accent-bright ${
+            featured ? "h-11 w-11 text-sm" : "h-9 w-9 text-xs"
+          }`}
+        >
+          {initials(item.name)}
+        </span>
+        <span className="min-w-0">
+          <span className="block truncate text-sm font-semibold text-silver">{item.name}</span>
+          <span className="block truncate text-xs text-silver-dim">{item.role}</span>
+        </span>
+      </figcaption>
+    </figure>
+  );
+}
+
 function Reviews() {
   const { t } = useLanguage();
+  const [featured, ...rest] = t.reviews.items;
+  const ratingLabel = (rating: number) =>
+    t.reviews.ratingLabel.replace("{n}", String(rating));
+
   return (
-    <section id="reviews" className="border-t border-white/5 bg-background-alt px-6 py-28 text-center">
-      <div className="mx-auto max-w-3xl">
+    <section
+      id="reviews"
+      className="relative overflow-hidden border-t border-white/5 bg-background-alt px-6 py-28"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-0 h-[520px] w-[900px] -translate-x-1/2 opacity-15 blur-3xl"
+        style={{ background: "radial-gradient(circle, #4a6b8a 0%, transparent 70%)" }}
+      />
+      <div className="relative mx-auto max-w-3xl text-center">
         <motion.p
           {...fadeUp(0)}
           className="text-xs font-semibold uppercase tracking-[0.3em] text-silver-dim"
@@ -234,25 +330,30 @@ function Reviews() {
         >
           {t.reviews.title}
         </motion.h2>
+        <motion.p
+          {...fadeUp(0.16)}
+          className="mt-7 inline-flex items-center gap-2 rounded-full border border-silver-dim/25 bg-background/60 px-4 py-1.5 text-xs text-silver-dim"
+        >
+          <Info className="h-3.5 w-3.5 shrink-0" aria-hidden />
+          {t.reviews.disclaimer}
+        </motion.p>
       </div>
-      <div className="mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-3">
-        {t.reviews.items.map((item, i) => (
-          <motion.figure
-            key={item.name}
-            {...fadeUp(0.14 + i * 0.08)}
-            className="rounded-2xl border border-silver-dim/25 bg-background p-8 text-left"
-          >
-            <blockquote className="text-sm leading-relaxed text-foreground/90">
-              “{item.quote}”
-            </blockquote>
-            <figcaption className="mt-6 text-sm">
-              <span className="font-semibold text-silver">{item.name}</span>
-              <span className="block text-xs text-silver-dim">{item.role}</span>
-            </figcaption>
-          </motion.figure>
-        ))}
+      <div className="relative mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-5">
+        {featured && (
+          <motion.div {...fadeUp(0.14)} className="md:col-span-3">
+            <ReviewCard item={featured} ratingLabel={ratingLabel(featured.rating)} featured />
+          </motion.div>
+        )}
+        {rest.length > 0 && (
+          <div className="flex flex-col gap-6 md:col-span-2">
+            {rest.map((item, i) => (
+              <motion.div key={item.name} {...fadeUp(0.22 + i * 0.08)} className="flex-1">
+                <ReviewCard item={item} ratingLabel={ratingLabel(item.rating)} />
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
-      <p className="mt-8 text-xs italic text-silver-dim">{t.reviews.disclaimer}</p>
     </section>
   );
 }

@@ -20,7 +20,9 @@ export type Content = {
     kicker: string;
     title: string;
     disclaimer: string;
-    items: { name: string; role: string; quote: string }[];
+    /** Accessible label for the star rating. `{n}` is replaced with the score. */
+    ratingLabel: string;
+    items: { name: string; role: string; quote: string; rating: number }[];
   };
   contact: {
     kicker: string;
@@ -65,24 +67,28 @@ export const content: Record<Lang, Content> = {
       kicker: "What People Say",
       title: "Early feedback from our first customers",
       disclaimer: "Example reviews — real customer stories coming soon.",
+      ratingLabel: "Rated {n} out of 5",
       items: [
         {
           name: "Marissa Ortiz",
           role: "Miami, FL",
           quote:
             "The set we bought looks and feels like it costs twice as much. Shipping was fast and everything arrived exactly as pictured.",
+          rating: 5,
         },
         {
           name: "David Chen",
           role: "Austin, TX",
           quote:
             "Reached out with a question before ordering and got a real answer in minutes, not a bot. That alone earned my business.",
+          rating: 5,
         },
         {
           name: "Ana Beltrán",
           role: "Houston, TX",
           quote:
             "Finally a brand that doesn't feel disposable. Solid build, no buyer's remorse.",
+          rating: 5,
         },
       ],
     },
@@ -130,24 +136,28 @@ export const content: Record<Lang, Content> = {
       kicker: "Lo Que Dicen",
       title: "Primeras opiniones de nuestros clientes",
       disclaimer: "Reseñas de ejemplo — historias reales de clientes muy pronto.",
+      ratingLabel: "Calificación {n} de 5",
       items: [
         {
           name: "Marissa Ortiz",
           role: "Miami, FL",
           quote:
             "El set que compramos se ve y se siente como si costara el doble. El envío fue rápido y todo llegó tal cual la foto.",
+          rating: 5,
         },
         {
           name: "David Chen",
           role: "Austin, TX",
           quote:
             "Pregunté algo antes de comprar y me respondió una persona real en minutos, no un bot. Eso ya se ganó mi compra.",
+          rating: 5,
         },
         {
           name: "Ana Beltrán",
           role: "Houston, TX",
           quote:
             "Por fin una marca que no se siente desechable. Construcción sólida, sin arrepentimientos.",
+          rating: 5,
         },
       ],
     },
